@@ -1,5 +1,8 @@
 FROM codercom/code-server:latest
 
+# Switch to root for installation
+USER root
+
 # Install additional dependencies as needed
 RUN apt-get update && apt-get install -y \
     git \
