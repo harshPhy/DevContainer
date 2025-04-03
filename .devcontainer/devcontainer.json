@@ -1,6 +1,9 @@
 {
     "name": "Code Server Dev Container",
-    "image": "code-server:latest",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
     "workspaceFolder": "/workspace",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "forwardPorts": [3000, 8080],
@@ -8,7 +11,9 @@
         "vscode": {
             "extensions": [
                 "dbaeumer.vscode-eslint",
-                "ms-python.python"
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "saoudrizwan.claude-dev"
             ],
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "bash"
