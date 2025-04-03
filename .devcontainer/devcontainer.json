@@ -1,0 +1,24 @@
+{
+    "name": "Code Server Dev Container",
+    "image": "code-server:latest",
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "forwardPorts": [3000, 8080],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "ms-python.python"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+    "postCreateCommand": "echo 'Container is ready!'"
+}
+
+// RUN code-server --install-extension ms-python.python && \
+//     code-server --install-extension ms-toolsai.jupyter && \
+//     code-server --install-extension saoudrizwan.claude-dev && \
+//     code-server --install-extension KylinIdeTeam.kylin-python
