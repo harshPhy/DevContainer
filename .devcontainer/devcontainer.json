@@ -1,26 +1,32 @@
 {
-    "name": "Code Server Dev Container",
+    "name": "Backstage Dev Container",
     "build": {
         "dockerfile": "Dockerfile",
         "context": ".."
     },
     "workspaceFolder": "/workspace",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
-    "forwardPorts": [3001, 8081],
+    "forwardPorts": [7001, 7007, 8081],
     "customizations": {
         "vscode": {
             "extensions": [
                 "dbaeumer.vscode-eslint",
                 "ms-python.python",
                 "ms-toolsai.jupyter",
-                "saoudrizwan.claude-dev"
+                "saoudrizwan.claude-dev",
+                "esbenp.prettier-vscode",
+                "deepscan.vscode-deepscan",
+                "styled-components.vscode-styled-components"
             ],
             "settings": {
-                "terminal.integrated.defaultProfile.linux": "bash"
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "editor.formatOnSave": true,
+                "typescript.tsdk": "node_modules/typescript/lib"
             }
         }
     },
-    "postCreateCommand": "echo 'Container is ready!'"
+    "remoteUser": "root",
+    "postCreateCommand": "echo 'Container is ready! Run yarn install to set up your Backstage dependencies'"
 }
 
 // RUN code-server --install-extension ms-python.python && \

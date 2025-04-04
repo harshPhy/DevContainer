@@ -10,9 +10,16 @@ RUN apt-get update && apt-get install -y \
     wget \
     python3 \
     python3-pip \
+    gnupg \
     --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js and Yarn (required for Backstage)
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get update && \
+    apt-get install -y nodejs && \
+    npm install -g yarn
 
 # Install global extensions for code-server
 RUN code-server --install-extension ms-python.python \
